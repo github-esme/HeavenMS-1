@@ -2360,3 +2360,17 @@ Corrigido mobs em estado "fake" desaparecendo da tela assim que muda-se o contro
 26 Dezembro 2019,
 Revisado bosses no Dojo levando dano integral de Bamboo Rain (deveria ser 30% do MaxHP do mesmo).
 Corrigido atributo padrão "partySearch" definido com valor booleano inadequado na DB.
+
+--- Último commit oficial do projeto HeavenMS feito em Dec 28, 2019 ---
+
+21 Fevereiro 2020,
+Melhora no Query, ResultSet não percorre mais todo o inventario do personagem desnecessariamente.
+
+29 Outubro 2020,
+Swap project to maven (@Arnuh committed on 29 Oct)
+
+11 Novembro 2020,
+Set jdk version to 1.8 since that's proper format for pre 9 (@Arnuh committed on 11 Nov)
+
+16 Dezembro 2020,
+Removido o "-" que foi esquecido no script da quest 2251 e que fazia com que a mesma não funcionasse.

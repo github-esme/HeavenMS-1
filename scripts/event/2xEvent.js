@@ -37,13 +37,12 @@ function init() {
 	/*
         if(em.getChannelServer().getId() == 1) { // Only run on channel 1.
 		// AEST
-		timer1 = em.scheduleAtTimestamp("start", 1428220800000);
-		timer2 = em.scheduleAtTimestamp("stop", 1428228000000);
+		timer1 = em.scheduleAtTimestamp("start", 1428220800000);    // Epoch Timestamp in milliseconds https://www.epochconverter.com
+		timer2 = em.scheduleAtTimestamp("stop", 1428228000000);     // Epoch Timestamp in milliseconds https://www.epochconverter.com
 		// EDT
-		timer1 = em.scheduleAtTimestamp("start", 1428271200000);
-		timer2 = em.scheduleAtTimestamp("stop", 1428278400000);
-	}
-        */
+		timer1 = em.scheduleAtTimestamp("start", 1428271200000);    // Epoch Timestamp in milliseconds https://www.epochconverter.com
+		timer2 = em.scheduleAtTimestamp("stop", 1428278400000);     // Epoch Timestamp in milliseconds https://www.epochconverter.com
+	}*/
 }
 
 function cancelSchedule() {

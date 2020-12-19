@@ -2397,7 +2397,8 @@ public class MapleCharacter extends AbstractMapleCharacterObject {
                                             }
                                             
                                             int petid = rs.getInt("petid");
-                                            if(!rs.wasNull()) {
+                                            // thanks Ponk for reporting this issue
+                                            if(petid > -1) {
                                                     try (PreparedStatement ps2 = con.prepareStatement("DELETE FROM pets WHERE petid = ?")) {
                                                             ps2.setInt(1, petid);
                                                             ps2.executeUpdate();
@@ -7221,15 +7222,12 @@ public class MapleCharacter extends AbstractMapleCharacterObject {
             
             PreparedStatement ps2, ps3;
             ResultSet rs2, rs3;
-            
-            ps3 = con.prepareStatement("SELECT petid FROM inventoryitems WHERE characterid = ? AND petid IS NOT NULL");
+
+            ps3 = con.prepareStatement("SELECT petid FROM inventoryitems WHERE characterid = ? AND petid > -1");
             ps3.setInt(1, charid);
             rs3 = ps3.executeQuery();
             while(rs3.next()) {
                 int petId = rs3.getInt("petid");
-                if (rs3.wasNull()) {
-                    petId = -1;
-                }
 
                 ps2 = con.prepareStatement("SELECT itemid FROM petignores WHERE petid = ?");
                 ps2.setInt(1, petId);

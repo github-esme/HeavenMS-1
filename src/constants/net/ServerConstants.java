@@ -3,21 +3,23 @@ package constants.net;
 public class ServerConstants {
     
     //Server Version
-    public static short VERSION = 83;
+    public static short VERSION = 83;   // Field designed for Server Version
 
     //Java Configuration
-    public static final boolean JAVA_8 = getJavaVersion() >= 8;         //Max amount of times a party leader is allowed to persist on the Party Search before entry expiration (thus needing to manually restart the Party Search to be able to search for members).
-    
+    public static final boolean JAVA_8 = getJavaVersion() >= 8;   // Field designed for Java version
+
     //Debug Variables
-    public static int DEBUG_VALUES[] = new int[10];             // Field designed for packet testing purposes
+    public static int DEBUG_VALUES[] = new int[10];   // Field designed for packet testing purposes
     
     // https://github.com/openstreetmap/josm/blob/a3a6e8a6b657cf4c5b4c64ea14d6e87be6280d65/src/org/openstreetmap/josm/tools/Utils.java#L1566-L1585
     // Added by kolakcc (Familiar)
+
     /**
      * Returns the Java version as an int value.
      * @return the Java version as an int value (8, 9, etc.)
      * @since 12130
      */
+
     public static int getJavaVersion() {
         String version = System.getProperty("java.version");
         if (version.startsWith("1.")) {
