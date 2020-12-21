@@ -59,7 +59,6 @@ public class ServerConfig {
     public boolean USE_SUPPLY_RATE_COUPONS;
     public boolean USE_IP_VALIDATION;
     public boolean USE_CHARACTER_ACCOUNT_CHECK;
-
     public boolean USE_MAXRANGE;
     public boolean USE_MAXRANGE_ECHO_OF_HERO;
     public boolean USE_MTS;
@@ -109,6 +108,7 @@ public class ServerConfig {
     public boolean USE_MAP_OWNERSHIP_SYSTEM;
     public boolean USE_FISHING_SYSTEM;
     public boolean USE_NPCS_SCRIPTABLE;
+    public boolean USE_DETAILED_EQUIP_STORAGE_LOG;
 
     //Events/PQs Configuration
     public boolean USE_OLD_GMS_STYLED_PQ_NPCS;

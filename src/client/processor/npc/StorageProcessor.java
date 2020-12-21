@@ -25,6 +25,7 @@ import client.MapleClient;
 import client.MapleCharacter;
 import client.autoban.AutobanFactory;
 import client.inventory.Item;
+import client.inventory.Equip;
 import client.inventory.MapleInventory;
 import client.inventory.MapleInventoryType;
 import client.inventory.manipulator.MapleKarmaManipulator;
@@ -42,6 +43,7 @@ import tools.data.input.SeekableLittleEndianAccessor;
  * @author Matze
  * @author Ronan - inventory concurrency protection on storing items
  */
+
 public class StorageProcessor {
     
         public static void storageAction(SeekableLittleEndianAccessor slea, MapleClient c) {
@@ -83,15 +85,32 @@ public class StorageProcessor {
                                                         chr.gainMeso(-takeoutFee, false);
                                                 }
 
-                                                if (MapleInventoryManipulator.checkSpace(c, item.getItemId(), item.getQuantity(), item.getOwner())) {                
+                                                if (MapleInventoryManipulator.checkSpace(c, item.getItemId(), item.getQuantity(), item.getOwner())) {
                                                         if (storage.takeOut(item)) {
                                                                 chr.setUsedStorage();
-                                                                
+
+                                                                if(YamlConfig.config.server.USE_DETAILED_EQUIP_STORAGE_LOG) {
+                                                                        // Tracking when OUT - thanks suwaidy
+                                                                        if (item.isEquipment(item.getItemId())) {
+                                                                                String itemName = ii.getName(item.getItemId());
+                                                                                Equip equip = (Equip) item;
+                                                                                FilePrinter.print(FilePrinter.STORAGE + c.getAccountName() + ".txt", c.getPlayer().getName() + " took out " + itemName + "(" + item.getItemId() + ")\r\n"
+                                                                                        +"STR: " +equip.getStr()+ " DEX: "+equip.getDex()
+                                                                                        +" LUK: "+equip.getLuk()+" INT: "+equip.getInt()+"\r\n"
+                                                                                        +"Avoid: "+equip.getAvoid()+" Accuracy: "+equip.getAcc()+" \r\n"
+                                                                                        +"Def: "+equip.getWatk()+" MDef: "+equip.getMdef()+" \r\n"
+                                                                                        +"Upgrade Slots: "+equip.getUpgradeSlots()
+                                                                                        +"\r\nVicious Slots: "+equip.getVicious()+"\r\n"
+                                                                                        +"WeaponAtt: "+equip.getWatk()+"\r\nMagicAtt: "+equip.getMatk()+" \r\n"
+                                                                                        +"ItemLevel: "+equip.getItemLevel());
+                                                                        }
+                                                                } else {
+                                                                        String itemName = ii.getName(item.getItemId());
+                                                                        FilePrinter.print(FilePrinter.STORAGE + c.getAccountName() + ".txt", c.getPlayer().getName() + " took out " + item.getQuantity() + " " + itemName + " (" + item.getItemId() + ")");
+                                                                }
+
                                                                 MapleKarmaManipulator.toggleKarmaFlagToUntradeable(item);
                                                                 MapleInventoryManipulator.addFromDrop(c, item, false);
-
-                                                                String itemName = ii.getName(item.getItemId());
-                                                                FilePrinter.print(FilePrinter.STORAGE + c.getAccountName() + ".txt", c.getPlayer().getName() + " took out " + item.getQuantity() + " " + itemName + " (" + item.getItemId() + ")");
 
                                                                 storage.sendTakenOut(c, item.getInventoryType());
                                                         } else {
@@ -160,10 +179,27 @@ public class StorageProcessor {
                                                 
                                                 storage.store(item);    // inside a critical section, "!(storage.isFull())" is still in effect...
                                                 chr.setUsedStorage();
-                                                
-                                                String itemName = ii.getName(item.getItemId());
-                                                FilePrinter.print(FilePrinter.STORAGE + c.getAccountName() + ".txt", c.getPlayer().getName() + " stored " + item.getQuantity() + " " + itemName + " (" + item.getItemId() + ")");
-                                                
+
+                                                if(YamlConfig.config.server.USE_DETAILED_EQUIP_STORAGE_LOG) {
+                                                        // Tracking when IN - thanks suwaidy
+                                                        if (item.isEquipment(item.getItemId())) {
+                                                                String itemName = ii.getName(item.getItemId());
+                                                                Equip equip = (Equip) item;
+                                                                FilePrinter.print(FilePrinter.STORAGE + c.getAccountName() + ".txt", c.getPlayer().getName() + " stored " + itemName + "(" + item.getItemId() + ")\r\n"
+                                                                        +"STR: " +equip.getStr()+ " DEX: "+equip.getDex()
+                                                                        +" LUK: "+equip.getLuk()+" INT: "+equip.getInt()+"\r\n"
+                                                                        +"Avoid: "+equip.getAvoid()+" Accuracy: "+equip.getAcc()+" \r\n"
+                                                                        +"Def: "+equip.getWatk()+" MDef: "+equip.getMdef()+" \r\n"
+                                                                        +"Upgrade Slots: "+equip.getUpgradeSlots()
+                                                                        +"\r\nVicious Slots: "+equip.getVicious()+"\r\n"
+                                                                        +"WeaponAtt: "+equip.getWatk()+"\r\nMagicAtt: "+equip.getMatk()+" \r\n"
+                                                                        +"ItemLevel: "+equip.getItemLevel());
+                                                        }
+                                                } else {
+                                                        String itemName = ii.getName(item.getItemId());
+                                                        FilePrinter.print(FilePrinter.STORAGE + c.getAccountName() + ".txt", c.getPlayer().getName() + " stored " + item.getQuantity() + " " + itemName + " (" + item.getItemId() + ")");
+                                                }
+
                                                 storage.sendStored(c, ItemConstants.getInventoryType(itemId));
                                         }
                                 } else if (mode == 6) { // arrange items

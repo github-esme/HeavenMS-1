@@ -215,7 +215,6 @@ server:
     USE_SUPPLY_RATE_COUPONS: true       #Allows rate coupons to be sold through the Cash Shop.
     USE_IP_VALIDATION: false             #Enables IP checking when logging in.
     USE_CHARACTER_ACCOUNT_CHECK: false  #Enables one-character-per-account check when logging in. This might be resource intensive.
-
     USE_MAXRANGE: true                  #Will send and receive packets from all events on a map, rather than those of only view range.
     USE_MAXRANGE_ECHO_OF_HERO: true
     USE_MTS: false
@@ -265,6 +264,7 @@ server:
     USE_MAP_OWNERSHIP_SYSTEM: false      #Flag to enable/disable map ownership system
     USE_FISHING_SYSTEM: false            #Flag to enable/disable custom fishing system
     USE_NPCS_SCRIPTABLE: true           #Flag to enable/disable serverside predefined script NPCs.
+    USE_DETAILED_EQUIP_STORAGE_LOG: true    #Flag to enable/disable detailed equip storage log
 
     #Events/PQs Configuration
     USE_OLD_GMS_STYLED_PQ_NPCS: true     #Enables PQ NPCs with similar behaviour to old GMS style, that skips info about the PQs and immediately tries to register the party in.

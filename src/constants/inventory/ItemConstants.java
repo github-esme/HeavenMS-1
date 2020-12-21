@@ -34,6 +34,7 @@ import java.util.Map;
  * @author Jay Estrella
  * @author Ronan
  */
+
 public final class ItemConstants {
     protected static Map<Integer, MapleInventoryType> inventoryTypeCache = new HashMap<>();
     
@@ -43,7 +44,7 @@ public final class ItemConstants {
     public final static short COLD = 0x04;
     public final static short UNTRADEABLE = 0x08;
     public final static short KARMA_EQP = 0x10;
-    public final static short SANDBOX = 0x40;             // let 0x40 until it's proven something uses this
+    public final static short SANDBOX = 0x40;   // let 0x40 until it's proven something uses this
     public final static short PET_COME = 0x80;
     public final static short ACCOUNT_SHARING = 0x100;
     public final static short MERGE_UNTRADEABLE = 0x200;

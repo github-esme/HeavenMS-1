@@ -44,6 +44,10 @@ public class Item implements Comparable<Item> {
     private long expiration = -1;
     private String giftFrom = "";
 
+    public boolean isEquipment(int Item) {
+        return ItemConstants.isEquipment(Item);
+    }
+
     public Item(int id, short position, short quantity) {
         this.id = id;
         this.position = position;
