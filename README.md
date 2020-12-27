@@ -19,9 +19,11 @@ The main objective of this effort is to try as best as possible to recreate what
 ---
 ### Download items 
 
-Server files: https://github.com/ronancpl/HeavenMS
+Server files: https://github.com/vcoc/HeavenMS
 
 Client files & general tools: https://drive.google.com/drive/folders/0BzDsHSr-0V4MYVJ0TWIxd05hYUk
+
+Wz files: https://drive.google.com/drive/folders/14ccXBRd_hnkC1RZUj_Imm9_y21GYrbDl
 
 JDK 8: https://www.oracle.com/ca-en/java/technologies/javase/javase-jdk8-downloads.html
 * To bypass login requirements change "otn" to "otn-pub" in url(right click > copy url) after you agree to Oracle License.
