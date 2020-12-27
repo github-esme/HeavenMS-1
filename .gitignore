@@ -1,7 +1,8 @@
-﻿/logs/**
+﻿# Logs files
+/logs/**
 .idea/
 
-# build files
+# Build files
 target/
 /build/
 /dist/
@@ -11,7 +12,11 @@ target/
 /nbproject/
 *.iml
 
+# WZ Files
+/wz/
+**/wz/*.wz
 
+# Tools files
 /tools/MapleArrowFetcher/build/
 /tools/MapleArrowFetcher/dist/
 /tools/MapleArrowFetcher/nbproject/
