@@ -2374,3 +2374,6 @@ Set jdk version to 1.8 since that's proper format for pre 9 (@Arnuh committed on
 
 16 Dezembro 2020,
 Removido o "-" que foi esquecido no script da quest 2251 e que fazia com que a mesma não funcionasse.
+
+21 Dezembro 2020,
+Adicionado log de armazenamento detalhado para os equipamentos.
